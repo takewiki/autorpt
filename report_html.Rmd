@@ -1,0 +1,44 @@
+---
+title: "Dynamic report"
+output: html_document
+params:
+  data1: NA
+  data2: NA
+  chartTitle: "分析报告"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,message=FALSE,warning=FALSE,results='asis')
+Sys.setlocale("LC_CTYPE","zh_CN.utf-8")
+Sys.setlocale("LC_COLLATE","zh_CN.utf-8")
+Sys.setlocale("LC_MONETARY","zh_CN.utf-8")
+Sys.setlocale("LC_TIME","zh_CN.utf-8")
+```
+
+```{r}
+     #params$data1
+    # params$data2
+    # params$chartTitle
+```
+
+
+分析图如下：
+
+
+```{r, message=FALSE, warning=FALSE}
+    library(recharts)
+    Sys.setlocale("LC_CTYPE", "zh_CN.utf-8")
+    Sys.setlocale("LC_CTYPE","zh_CN.utf-8")
+Sys.setlocale("LC_COLLATE","zh_CN.utf-8")
+Sys.setlocale("LC_MONETARY","zh_CN.utf-8")
+Sys.setlocale("LC_TIME","zh_CN.utf-8")
+    #plot(rnorm(params$n), rnorm(params$n))
+    p<-echartr(params$data1, 省份, 收入, 年份, type="map_china") 
+      p <-p  %>%  setDataRange(splitNumber=0, valueRange=range(params$data2), 
+                               color=c('red','orange','yellow','limegreen','green')) 
+      p <-p %>%    setTitle(params$chartTitle)
+      p
+```
+
+
+Copyright 棱星数据 - All Rights Reserved

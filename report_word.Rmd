@@ -1,0 +1,48 @@
+---
+title: "report_word.Rmd"
+output: word_document
+always_allow_html: yes
+params:
+  data1: NA
+  data2: NA
+  chartTitle: "分析报告"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,message=FALSE,warning=FALSE,results='asis')
+Sys.setlocale("LC_CTYPE","zh_CN.utf-8")
+Sys.setlocale("LC_COLLATE","zh_CN.utf-8")
+Sys.setlocale("LC_MONETARY","zh_CN.utf-8")
+Sys.setlocale("LC_TIME","zh_CN.utf-8")
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE, message=FALSE, warning=FALSE}
+library(recharts)
+    Sys.setlocale("LC_CTYPE", "zh_CN.utf-8")
+    Sys.setlocale("LC_CTYPE","zh_CN.utf-8")
+Sys.setlocale("LC_COLLATE","zh_CN.utf-8")
+Sys.setlocale("LC_MONETARY","zh_CN.utf-8")
+Sys.setlocale("LC_TIME","zh_CN.utf-8")
+    #plot(rnorm(params$n), rnorm(params$n))
+    p<-echartr(params$data1, 省份, 收入, 年份, type="map_china") 
+      p <-p  %>%  setDataRange(splitNumber=0, valueRange=range(params$data2), 
+                               color=c('red','orange','yellow','limegreen','green')) 
+      p <-p %>%    setTitle(params$chartTitle)
+      p
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

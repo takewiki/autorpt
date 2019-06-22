@@ -1,0 +1,33 @@
+---
+title: "Dynamic report"
+output: html_document
+params:
+  data1: NA
+  data2: NA
+  chartTitle: "销售收入地图分析报告"
+---
+
+```{r}
+    # params$data1
+    # params$data2
+    # params$chartTitle
+```
+
+
+演示主题的分析报表如下：
+
+
+```{r}
+    library(recharts)
+    #plot(rnorm(params$n), rnorm(params$n))
+     p<-echartr(params$data1, 省份, 收入, 年份, type="map_china") 
+      p <-p  %>%  setDataRange(splitNumber=0, valueRange=range(params$data2), 
+                               color=c('red','orange','yellow','limegreen','green')) 
+      p <-p %>%    setTitle(params$chartTitle)
+      p
+      
+      # print(p)
+```
+
+
+Copyright © 棱星数据 - All Rights Reserved
